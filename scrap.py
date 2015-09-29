@@ -8,6 +8,13 @@ import sys
 
 # Browser
 br = mechanize.Browser()
+login_name      = sys.argv[1]
+password_name   = sys.argv[2]
+username_value  = sys.argv[3]
+password_value  = sys.argv[4]
+login_url       = sys.argv[5]
+url_to_scrap    = sys.argv[6]
+form_row        = sys.argv[7]
 
 # Cookie Jar
 cj = cookielib.LWPCookieJar()
@@ -15,7 +22,7 @@ br.set_cookiejar(cj)
 
 # Browser options
 br.set_handle_equiv(True)
-# br.set_handle_gzip(True)
+br.set_handle_gzip(True)
 br.set_handle_redirect(True)
 br.set_handle_referer(True)
 br.set_handle_robots(False)
@@ -24,12 +31,12 @@ br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
 br.addheaders = [('User-agent', 'Chrome')]
 
 # The site we will navigate into, handling it's session
-br.open(sys.argv[5])
-br.select_form(nr = int(sys.argv[7]))
+br.open(login_url)
+br.select_form(nr = int(form_row))
 
-br.form[sys.argv[1]] = sys.argv[3]
-br.form[sys.argv[2]] = sys.argv[4]
+br.form[login_name]     = username_value
+br.form[password_name]  = password_value
 
 br.submit()
 
-print(br.open(sys.argv[6]).read())
+print br.open(url_to_scrap).read()
