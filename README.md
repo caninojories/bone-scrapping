@@ -3,6 +3,15 @@ Bone Scrapping
 
 ##### npm install bone-scrapping
 
+### Requirements
+#### python
+
+#### Then install the following:
+##### pip install mechanize
+##### pip install BeautifulSoup
+##### pip install html2text
+
+
 ```
 var bone_scrapping = require('bone-scrapping')(options);
 ```

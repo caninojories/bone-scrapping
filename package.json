@@ -1,6 +1,6 @@
 {
   "name": "bone-scrapping",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Scrapping Website with Authentication",
   "main": "index.js",
   "devDependencies": {
