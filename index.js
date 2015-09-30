@@ -3,18 +3,19 @@
 
   module.exports = function(options) {
     return new Promise(function(resolve, reject) {
-      var cp = require('child_process').exec,
-          spw = cp('python', ['scrap.py', options.login_name, options.password_name,
-          options.username_value, options.password_value,
-          options.login_url, options.url_to_scrap, options.form_row]);
-
-          var cmd = 'python scrap.py ' + options.login_name + ' ' + options.password_name + ' ' +
+      var path      =  require('path'),
+          rootPath  = path.normalize(__dirname + '/'),
+          cp        = require('child_process').exec,
+          cmd       = 'python ' + rootPath + 'scrap.py ' + options.login_name + ' ' + options.password_name + ' ' +
           options.username_value + ' ' + options.password_value + ' ' + options.login_url + ' ' +
           options.url_to_scrap + ' ' + options.form_row;
 
-        cp(cmd, function(error, stdout, stderr) {
-          spw.kill();
-          return resolve(console.log(stdout));
+        cp(cmd, {maxBuffer : 500 * 1024}, function(error, stdout, stderr) {
+          if (error) {
+            console.log('Erorr: ' + error);
+            return reject(error);
+          }
+          return resolve(stdout);
         });
     });
   };
