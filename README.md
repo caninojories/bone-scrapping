@@ -31,6 +31,6 @@ options = {
 Then call:
 
 bone_scrapping.then(function(data) {
-  /*data*/
+  /*it will return the page source code*/
 })
 ```
