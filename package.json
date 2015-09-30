@@ -1,13 +1,10 @@
 {
   "name": "bone-scrapping",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Scrapping Website with Authentication",
   "main": "index.js",
-  "devDependencies": {
-  },
-  "dependencies": {
-
-  },
+  "devDependencies": {},
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/caninojories/bone-scrapping.git"
